@@ -4,11 +4,11 @@ project(key-writer
 	LANGUAGES C
 	VERSION 1.0.0)
 
-# Use "-ffunction-sections -Wl,--gc-sections" to remove unused code
+# To invoke a debug build use: 'cmake -DCMAKE_BUILD_TYPE=Debug ..'
 set(CMAKE_C_FLAGS "-Wall -O3 -pedantic") 
-set(CMAKE_C_FLAGS_DEBUG "-Wall -O0 -g -DDEBUG") # use `-DCMAKE_BUILD_TYPE=Debug'
+set(CMAKE_C_FLAGS_DEBUG "-Wall -O0 -g -DDEBUG")
 
-# -- MBEDTLS --
+# -- Mbed TLS --
 
 option(USE_PKCS11_HELPER_LIBRARY "Build mbed TLS with the pkcs11-helper library." OFF)
 option(ENABLE_ZLIB_SUPPORT "Build mbed TLS with zlib library." OFF)
@@ -28,9 +28,11 @@ if (CMAKE_SYSTEM MATCHES "OpenBSD")
 	option(LINK_WITH_PTHREAD "Explicitly link mbed TLS library to pthread." on)
 endif()
 
-set(MBEDTLS_LIBRARIES "mbedtls") #  "mbedx509" "mbedcrypto"
+set(MBEDTLS_LIBRARIES "mbedtls")
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/external/mbedtls mbedtls)
+
+# -- Key Writer --
 
 set(SOURCE
 	key_writer.c

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-key_writer is an pplication for converting cryptographic keys for use with the PSA Crypto API. The current implementation focuses on the support for ECC keys. 
+key_writer is an application for converting cryptographic keys for use with the PSA Crypto API. The current implementation focuses on the support for ECC keys. 
 
 Here is a common use case. You have created an ECC key pair for use with your application. Now, you want to use these keys within your code that uses the PSA Crypto API. Unfortunately, the PSA Crypto API requires key to be important in a raw key format. Hence, you have to convert the keys first. 
 

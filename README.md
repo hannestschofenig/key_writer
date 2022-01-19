@@ -34,12 +34,18 @@ First, we use the OpenSSL commands to create a PEM encoded ECC private key with 
 openssl ecparam -name prime256v1 -genkey -noout -out skR.pem
 ```
 
+Then, we generate a PEM version of the public key (pkR.pem) from the private key.
+
+```
+openssl ec -in skR.pem -pubout -out pkR.pem
+```
+
 Next, we need to convert the key in PEM format into the raw key format using key_writer. The format used by the PSA Crypto API is documented in https://armmbed.github.io/mbed-crypto/html/ (or more specifically in this section https://armmbed.github.io/mbed-crypto/html/api/keys/management.html?highlight=import#c.psa_export_public_key).
 
 We will invoke the key_writer utility to create two files, one for the public key and another one for the private key.
 
 ```
-./key_writer mode=private filename=skR.pem output_mode=public output_file=pkR.bin output_format=bin
+./key_writer mode=public filename=pkR.pem output_mode=public output_file=pkR.bin output_format=bin
 ./key_writer mode=private filename=skR.pem output_mode=private output_file=skR.bin output_format=bin
 ```
 

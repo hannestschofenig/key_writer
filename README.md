@@ -56,7 +56,7 @@ mkdir external
 cd external
 git clone https://github.com/ARMmbed/mbedtls.git
 cd mbedtls
-git checkout development_2.x
+git checkout archive/development_2.x
 cd ..
 cd ..
 mkdir build

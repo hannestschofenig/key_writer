@@ -490,7 +490,7 @@ int main( int argc, char *argv[] )
                 size_t remaining_bytes=sizeof(output);
             
                 // Uncompressed point
-                *p++=0x40;
+                *p++=0x04;
                 remaining_bytes--;
 
                 // X coordinate
